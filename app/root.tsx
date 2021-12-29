@@ -10,7 +10,7 @@ import type { MetaFunction } from 'remix';
 import { globalStyles, getCssText } from './styles/stitches.config';
 
 export const meta: MetaFunction = () => {
-  return { title: 'New Remix App' };
+  return { title: 'pde-team' };
 };
 
 const Head = () => (

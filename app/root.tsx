@@ -5,12 +5,27 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from 'remix';
 import type { MetaFunction } from 'remix';
 import { globalStyles, getCssText } from './styles/stitches.config';
+import type { LoaderFunction } from 'remix';
+import type { images } from '@prisma/client';
+import { db } from '~/utils/db.server';
 
 export const meta: MetaFunction = () => {
   return { title: 'pde-team' };
+};
+
+type LoaderData = { images: images[] };
+
+export let loader: LoaderFunction = async () => {
+  const images = await db.images.findMany();
+
+  const data: LoaderData = {
+    images,
+  };
+  return { data };
 };
 
 const Head = () => (
@@ -44,6 +59,10 @@ const BodyScripts = () => (
 
 export default function App() {
   globalStyles();
+
+  const {
+    data: { images },
+  } = useLoaderData();
 
   return (
     <html lang="en">

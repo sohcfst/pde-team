@@ -64,7 +64,7 @@ const MemoryScroller = ({ images }) => {
                   <DialogPrimitive.Trigger asChild>
                     <Image
                       id={`parallax-image-${i + 1}`}
-                      width={400}
+                      width={500}
                       src={image.url}
                     />
                   </DialogPrimitive.Trigger>

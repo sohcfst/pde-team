@@ -6,7 +6,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
-    "postinstall": "remix setup node",
+    "postinstall": "npx prisma generate || remix setup node",
     "netlify": "netlify"
   },
   "prisma": {

@@ -1,75 +1,131 @@
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
-} from 'remix';
+import { Outlet, useLoaderData } from 'remix';
 import type { MetaFunction } from 'remix';
-import { globalStyles, getCssText } from './styles/stitches.config';
+import { globalStyles } from './styles/stitches.config';
 import type { LoaderFunction } from 'remix';
-import type { images } from '@prisma/client';
+
 import { db } from '~/utils/db.server';
+import { BodyScripts } from './pages/root/BodyScripts';
+import { Head } from './pages/root/Head';
+import MemoryScroller from './components/MemoryScroller/MemoryScroller';
+import { Flex } from './components/Flex';
+import { NoiseBackground } from './components/Noise';
 
 export const meta: MetaFunction = () => {
   return { title: 'pde-team' };
 };
 
-type LoaderData = { images: images[] };
+interface ImageWithParallaxConfig {
+  url: null | string;
+  x: string[];
+  y: string[];
+}
+
+type LoaderData = { imageWithParallaxConfig: ImageWithParallaxConfig[] };
 
 export let loader: LoaderFunction = async () => {
   const images = await db.images.findMany();
 
+  const parallaxConfig = [
+    { y: ['400px', '0px'], x: ['-350px', '-350px'] }, // 1
+    { y: ['0px', '0px'], x: ['300px', '300px'] }, // 2
+    { y: ['200px', '0px'], x: ['-200px', '-200px'] }, // 3
+    { y: ['100px', '100px'], x: ['400px', '400px'] }, // 4
+    { y: ['400px', '200px'], x: ['50px', '50px'] }, // 5
+    { y: ['100px', '-800px'], x: ['-400px', '-400px'] }, // 6
+    { y: ['0px', '0px'], x: ['-300px', '-300px'] }, // 7
+    { y: ['100px', '-800px'], x: ['400px', '400px'] }, // 8
+    { y: ['100px', '-300px'], x: ['230px', '230px'] }, // 9
+    { y: ['150px', '-500px'], x: ['-400px', '-400px'] }, // 10
+    { y: ['0px', '0px'], x: ['-200px', '-200px'] }, // 11
+    { y: ['100px', '-800px'], x: ['330px', '330px'] }, // 12
+    { y: ['100px', '-500px'], x: ['-300px', '-300px'] }, // 13
+    { y: ['400px', '0px'], x: ['-350px', '-350px'] }, // 1
+    { y: ['0px', '0px'], x: ['300px', '300px'] }, // 2
+    { y: ['200px', '0px'], x: ['-200px', '-200px'] }, // 3
+    { y: ['100px', '100px'], x: ['400px', '400px'] }, // 4
+    { y: ['400px', '200px'], x: ['50px', '50px'] }, // 5
+    { y: ['100px', '-800px'], x: ['-400px', '-400px'] }, // 6
+    { y: ['0px', '0px'], x: ['-300px', '-300px'] }, // 7
+    { y: ['100px', '-800px'], x: ['400px', '400px'] }, // 8
+    { y: ['100px', '-300px'], x: ['230px', '230px'] }, // 9
+    { y: ['150px', '-500px'], x: ['-400px', '-400px'] }, // 10
+    { y: ['0px', '0px'], x: ['-200px', '-200px'] }, // 11
+    { y: ['100px', '-800px'], x: ['330px', '330px'] }, // 12
+    { y: ['100px', '-500px'], x: ['-300px', '-300px'] }, // 13
+    { y: ['150px', '-500px'], x: ['-400px', '-400px'] },
+    { y: ['100px', '100px'], x: ['400px', '400px'] },
+    { y: ['100px', '-800px'], x: ['-400px', '-400px'] },
+  ];
+
+  const imageWithParallaxConfig = images.map((image, i) => {
+    return {
+      url: image.url,
+      x: parallaxConfig[i].x,
+      y: parallaxConfig[i].y,
+    };
+  });
+
   const data: LoaderData = {
-    images,
+    imageWithParallaxConfig: imageWithParallaxConfig.reverse(),
   };
+
   return { data };
 };
-
-const Head = () => (
-  <head>
-    <meta charSet="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&family=Cinzel&family=JetBrains+Mono&display=swap"
-      rel="stylesheet"
-    />
-    <Meta />
-    <Links />
-    <style
-      id="stitches"
-      suppressHydrationWarning
-      dangerouslySetInnerHTML={{ __html: getCssText() }}
-    />
-  </head>
-);
-
-const BodyScripts = () => (
-  <>
-    <ScrollRestoration />
-    <Scripts />
-    {process.env.NODE_ENV === 'development' && <LiveReload />}
-  </>
-);
 
 export default function App() {
   globalStyles();
 
   const {
-    data: { images },
+    data: { imageWithParallaxConfig },
   } = useLoaderData();
-
+  console.log(imageWithParallaxConfig);
   return (
     <html lang="en">
       <Head />
       <body>
-        <h1>/</h1>
-        <Outlet />
+        <Flex css={{ py: 40 }} layout={'centerColumn'}>
+          <NoiseBackground />
+          <Flex
+            css={{
+              width: 1192,
+              height: '80vh',
+              br: 8,
+              z: 1,
+              background: 'transparent',
+            }}
+          >
+            <Flex
+              layout="centerColumn"
+              css={{
+                height: '100%',
+
+                br: 8,
+                width: '100%',
+                px: 24,
+                fontWeight: 'bold',
+                gap: 24,
+                background: 'transparent',
+              }}
+            >
+              <Flex
+                css={{
+                  borderRadius: 8,
+                  border: '1px solid white',
+                  width: '100%',
+                  height: '100%',
+                  background: '$stitchesGrey',
+                  boxShadow: `0.5px 1px 1px hsl(220deg 100% 100% / 0.5),
+              1px 2px 2px hsl(220deg 100% 100% / 0.5)`,
+                }}
+                layout={'centerColumn'}
+              >
+                <MemoryScroller images={imageWithParallaxConfig} />
+
+                <Outlet />
+              </Flex>
+            </Flex>
+          </Flex>
+        </Flex>
         <BodyScripts />
       </body>
     </html>

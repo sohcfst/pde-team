@@ -45,7 +45,7 @@ const HeaderContainer = () => (
     css={{
       position: 'fixed',
       top: 100,
-      left: 60,
+      left: 100,
     }}
   >
     <img

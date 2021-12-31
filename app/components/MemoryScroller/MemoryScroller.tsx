@@ -12,8 +12,6 @@ import {
 } from './MemoryScroller.styled';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 
-console.log(parallaxConfig);
-
 const MemoryScroller = ({ images }) => {
   return (
     <>
@@ -33,30 +31,6 @@ const MemoryScroller = ({ images }) => {
           }}
         >
           <NoiseBackground />
-          {/* {images.map((image, i) => {
-            return (
-              <Parallax x={images.x} y={images.y} key={image.url}>
-                <DialogPrimitive.Root>
-                  <DialogPrimitive.Trigger asChild>
-                    <Image
-                      id={`parallax-image-${i + 1}`}
-                      width={400}
-                      src={image.url}
-                    />
-                  </DialogPrimitive.Trigger>
-                  <DialogPrimitive.Portal>
-                    <StyledOverlay />
-                    <StyledContent>
-                      <ContentImage
-                        id={`parallax-image-${i + 1}`}
-                        src={image.url}
-                      />
-                    </StyledContent>
-                  </DialogPrimitive.Portal>
-                </DialogPrimitive.Root>
-              </Parallax>
-            );
-          })} */}
           {images.map((image, i) => {
             return (
               <Parallax x={parallaxConfig[i].x} y={parallaxConfig[i].y}>

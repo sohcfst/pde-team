@@ -54,7 +54,7 @@ export default function App() {
               width: 1192,
               height: '80vh',
               br: 8,
-              z: 1,
+              z: -1,
               background: 'transparent',
             }}
           >

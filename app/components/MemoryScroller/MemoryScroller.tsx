@@ -20,7 +20,7 @@ const MemoryScroller = ({ images }) => {
         <Flex
           layout={'centerColumn'}
           css={{
-            height: 10000,
+            height: 11000,
             width: '100%',
             background: `linear-gradient(175deg, ${gradientString}, ${gradientString}, ${gradientString})`,
             zIndex: 0,

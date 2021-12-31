@@ -42,7 +42,7 @@ export default function App() {
   const {
     data: { imageWithParallaxConfig },
   } = useLoaderData();
-  console.log(imageWithParallaxConfig);
+
   return (
     <html lang="en">
       <Head />

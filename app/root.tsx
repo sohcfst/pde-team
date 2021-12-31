@@ -40,6 +40,10 @@ const H1 = styled('h1', {
   paddingTop: 2,
 });
 
+const Image = styled('img', {
+  cursor: 'pointer',
+});
+
 const HeaderContainer = () => (
   <Flex
     css={{
@@ -48,14 +52,17 @@ const HeaderContainer = () => (
       left: 100,
     }}
   >
-    <img
+    <Image
       src="https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%20Chairs_Logo_Black%20RGB_10.22.18.png"
       loading="eager"
       width="159"
       sizes="159px"
       srcSet="https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-500.png 500w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-800.png 800w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-1080.png 1080w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-1600.png 1600w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-2000.png 2000w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-2600.png 2600w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-3200.png 3200w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%20Chairs_Logo_Black%20RGB_10.22.18.png 5183w"
       alt=""
-    ></img>
+      onClick={() => {
+        window.location.href = 'http://twochairs.com';
+      }}
+    ></Image>
     <H1>product, design, & engineering offsite 2021</H1>
   </Flex>
 );

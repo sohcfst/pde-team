@@ -38,9 +38,9 @@ const { css, keyframes, getCssText, theme, createTheme, config, styled } =
       },
     },
     media: {
-      breakpoint640: '(min-width: 640px)',
-      breakpoint768: '(min-width: 768px)',
-      breakpoint1024: '(min-width: 1024px)',
+      breakpoint640: '(max-width: 640px)',
+      breakpoint768: '(max-width: 768px)',
+      breakpoint1024: '(max-width: 1024px)',
     },
     utils: {
       // Abbreviated margin properties

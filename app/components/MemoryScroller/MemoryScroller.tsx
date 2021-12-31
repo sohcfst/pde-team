@@ -19,9 +19,15 @@ const MemoryScroller = ({ images }) => {
         <Flex layout={'centerColumn'}></Flex>
         <Flex
           layout={'centerColumn'}
+          containerWidth={{
+            '@breakpoint1024': 'large',
+            '@breakpoint768': 'medium',
+            '@breakpoint640': 'small',
+          }}
           css={{
             height: 11000,
             width: '100%',
+
             background: `linear-gradient(175deg, ${gradientString}, ${gradientString}, ${gradientString})`,
             zIndex: 0,
             backgroundBlendMode: 'screen',
@@ -30,7 +36,7 @@ const MemoryScroller = ({ images }) => {
             br: 8,
           }}
         >
-          <NoiseBackground />
+          <NoiseBackground className="noise-background" />
           {images.map((image, i) => {
             return (
               <Parallax x={parallaxConfig[i].x} y={parallaxConfig[i].y}>

@@ -7,6 +7,20 @@ export const Flex = styled('div', {
   display: 'flex',
 
   variants: {
+    containerWidth: {
+      small: {
+        width: 300,
+        '$.noise-background': {
+          display: 'none',
+        },
+      },
+      medium: {
+        width: 300,
+      },
+      large: {
+        width: 580,
+      },
+    },
     // the prop / api that we expose
     // <Flex flexDirection="column" />, flex-direction: 'column' will be applied to the Flex component
     flexDirection: {

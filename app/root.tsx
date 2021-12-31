@@ -11,6 +11,7 @@ import { Flex } from './components/Flex';
 import { NoiseBackground } from './components/Noise';
 import { parallaxConfig } from './pages/root/parallax.constants';
 import { ImageWithParallaxConfig, shuffle } from './pages/root/utils';
+import { useEffect } from 'react';
 
 export const meta: MetaFunction = () => {
   return { title: 'pde-team' };
@@ -42,6 +43,7 @@ const H1 = styled('h1', {
 
 const Image = styled('img', {
   cursor: 'pointer',
+  height: 59,
 });
 
 const HeaderContainer = () => (
@@ -55,10 +57,8 @@ const HeaderContainer = () => (
     <Image
       src="https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%20Chairs_Logo_Black%20RGB_10.22.18.png"
       loading="eager"
-      width="159"
-      sizes="159px"
-      srcSet="https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-500.png 500w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-800.png 800w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-1080.png 1080w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-1600.png 1600w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-2000.png 2000w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-2600.png 2600w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-3200.png 3200w, https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%20Chairs_Logo_Black%20RGB_10.22.18.png 5183w"
-      alt=""
+      srcSet="https://assets-global.website-files.com/5fd7e7372a07dfc79fb9b4f8/5fd7e7372a07df7466b9b524_Two%2520Chairs_Logo_Black%2520RGB_10.22.18-p-500.png"
+      alt="two chairs logo"
       onClick={() => {
         window.location.href = 'http://twochairs.com';
       }}
@@ -74,17 +74,19 @@ export default function App() {
     data: { imageWithParallaxConfig },
   } = useLoaderData();
 
+  const useCurrentbreakPoint = () => {
+    useEffect(() => {}, []);
+  };
+
   return (
     <html lang="en">
       <Head />
       <body>
         <HeaderContainer />
         <Flex css={{ py: 40 }} layout={'centerColumn'}>
-          <NoiseBackground />
-
           <Flex
             css={{
-              width: 1192,
+              width: '1192px',
               height: '80vh',
               br: 8,
               z: -1,
@@ -95,7 +97,6 @@ export default function App() {
               layout="centerColumn"
               css={{
                 height: '100%',
-
                 br: 8,
                 width: '100%',
                 px: 24,

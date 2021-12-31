@@ -50,8 +50,8 @@ const HeaderContainer = () => (
   <Flex
     css={{
       position: 'fixed',
-      top: 100,
-      left: 100,
+      left: '50%',
+      transform: 'translateX(-50%)',
     }}
   >
     <Image

@@ -51,6 +51,7 @@ const HeaderContainer = () => (
     css={{
       position: 'fixed',
       left: '50%',
+      top: '10%',
       transform: 'translateX(-50%)',
     }}
   >

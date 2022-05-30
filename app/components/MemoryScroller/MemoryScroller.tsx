@@ -1,7 +1,7 @@
+import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
 import { Flex } from '../Flex';
 import { NoiseBackground } from '../Noise';
-
 import {
   ContentImage,
   gradientString,
@@ -10,7 +10,6 @@ import {
   StyledContent,
   StyledOverlay,
 } from './MemoryScroller.styled';
-import * as DialogPrimitive from '@radix-ui/react-dialog';
 
 const MemoryScroller = ({ images }) => {
   return (
